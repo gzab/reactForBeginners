@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
@@ -8,6 +8,13 @@ function App() {
     const handleClickEvent = (event) => {
       /* handle the event */
     }
+    useEffect(() => {
+    console.log(`You clicked ${count} times`)
+    })
+
+    useEffect(() => {
+      console.log(`Hi, you clicked ${count} times`)
+    }, [count])
 
     return (
     <div className="App">
@@ -20,7 +27,7 @@ function App() {
           message === 'Hello!' ? 'The message was "Hello!"' : message
         }
         <WelcomeMessage> Here is some message :) </WelcomeMessage>
-        <Counter setCount={setCount} />
+        <Counter setCount={setCount} count={count} />
         <button onClick={handleClickEvent}>Click here</button>
 
         <a
@@ -40,11 +47,11 @@ function WelcomeMessage({children}) {
   return <p>{children}!</p>
 }
 
-function Counter ({setCount}) {
+function Counter ({setCount}, {count}) {
     return (
       <div>
-        <p>You clicked 1 times</p>
-        <button onClick={() => setCount(1)}>Click me</button>
+      <p>You clicked {count} times</p>
+        <button onClick={() => setCount(count)}>Click me</button>
       </div>
     )
 }
