@@ -17,7 +17,7 @@ function App() {
         {
           message === 'Hello!' ? 'The message was "Hello!"' : message
         }
-        <WelcomeMessage />
+        <WelcomeMessage myprop={'Welcome to the component props!!!'}/>
         <div>
           <p>You clicked {count} times</p>
           <button onClick={() => setCount(count + 1)}>Click me</button>
@@ -35,23 +35,23 @@ function App() {
     );
 }
 
-function WelcomeMessage() {
-  return <p>Welcome!</p>
+function WelcomeMessage({myprop}) {
+  return <p>{myprop}!</p>
 }
 
-function CountState () {
-  const Counter = () => {
-    const [count, setCount] = useState(0)
-
-    return (
-      <div>
-        <p>You clicked {count} times</p>
-        <button onClick={() => setCount(count + 1)}>Click me</button>
-      </div>
-    )
-  }
-
-  ReactDOM.render(<Counter />, document.getElementById('app'))
-}
+// function CountState () {
+//   const Counter = () => {
+//     const [count, setCount] = useState(0)
+//
+//     return (
+//       <div>
+//         <p>You clicked {count} times</p>
+//         <button onClick={() => setCount(count + 1)}>Click me</button>
+//       </div>
+//     )
+//   }
+//
+//   ReactDOM.render(<Counter />, document.getElementById('app'))
+// }
 
 export default App;
